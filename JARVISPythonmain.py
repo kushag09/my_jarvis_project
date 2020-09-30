@@ -135,7 +135,21 @@ if __name__ == '__main__':
             except Exception as e:
                 print(e)
                 speak("Sorry...... Sir, I am not able to send this email.")
+           
+         elif 'remember that' in query:
+            speak("what should i remember sir")
+            rememberMessage = takeCommand()
+            speak("you said me to remember"+rememberMessage)
+            remember = open('data.txt', 'w')
+            remember.write(rememberMessage)
+            remember.close()
 
+        elif 'do you remember anything' in query:
+            remember = open('data.txt', 'r')
+            speak("you said me to remember that" + remember.read())
+
+        elif 'sleep' in query:
+            sys.exit()
         elif 'quit' in query:
             speak("Thank you for your valuable time...;.....Over-and-out...........Sir")
             exit()
