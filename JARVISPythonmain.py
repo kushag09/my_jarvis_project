@@ -92,6 +92,14 @@ if __name__ == '__main__':
             webbrowser.register('chrome',None,webbrowser.BackgroundBrowser("C://Program Files (x86)//Google//Chrome//Application//chrome.exe"))
             query=query.replace(" ","+")
             webbrowser.get('chrome').open(f'https://google.com')
+            
+        elif 'on google' in query:
+
+            query=query.replace(" on google","")
+            webbrowser.register('chrome',None,webbrowser.BackgroundBrowser("C://Program Files (x86)//Google//Chrome//Application//chrome.exe"))
+            query=query.replace(" ","+")
+            print(query)
+            webbrowser.get('chrome').open(f'https://google.com/search?q={query}')
 
         elif 'are you' in query:
             speak("I am Erling Haaland, the Assistant. Authored by.......;Sir........; Ansh Dholkia")
