@@ -6,6 +6,7 @@ import webbrowser
 import os
 import random
 import smtplib
+import time
 
 engine =pyttsx3.init('sapi5')
 voices=engine.getProperty('voices')
@@ -118,7 +119,22 @@ if __name__ == '__main__':
         elif 'the time' in query:
             strTime=datetime.datetime.now().strftime("%H:%M:%S")
             speak(f"Sir, the time is {strTime}")
+        
+         elif 'timer' in query or 'stopwatch' in query:
 
+            speak("For how many minutes?")
+            wait = takeCommand()
+            wait = wait.replace('minutes', '')
+            wait = wait.replace('minute', '')
+            wait = wait.replace('for', '')
+            wait = float(wait)
+            wait = wait * 60
+            speak(f'I will remind you in {wait} seconds')
+
+            time.sleep(wait)
+            speak('Your time has been finished sir')
+
+        
         elif 'open code' in query:
             codepath="C:\\Users\\Ansh\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
             speak("Opening VS Code;.....Sir")
@@ -155,7 +171,13 @@ if __name__ == '__main__':
         elif 'do you remember anything' in query:
             remember = open('data.txt', 'r')
             speak("you said me to remember that" + remember.read())
+            
+        elif 'hi' in query or 'hello' in query:
+            speak('Hello sir, how may I help you?')
 
+        elif 'thank you' in query or 'thanks' in query:
+            speak('Your welcome sir')
+            
         elif 'sleep' in query:
             sys.exit()
         elif 'quit' in query:
